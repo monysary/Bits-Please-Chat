@@ -2,8 +2,9 @@
 const express = require('express');
 const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
 const path = require('path');
+const session = require('express-session')
+const hbs = exphbs.create({});
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -12,11 +13,20 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers'));
+
+// Setting up sessions
+const sess = {
+    secret: 'the secret string',
+    resave: false,
+    saveUninitialized: false
+};
+app.use(session(sess));
 
 // Setting up express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(require('./controllers'));
 
 // App listening on PORT
 sequelize.sync().then(() => {
