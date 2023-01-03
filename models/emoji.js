@@ -5,7 +5,11 @@ class Emoji extends Model {}
 
 Emoji.init(
     {
-        emoji: {
+        emoji_src: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        emoji_name: {
             type: DataTypes.STRING,
             allowNull: false
         }
