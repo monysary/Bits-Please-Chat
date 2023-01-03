@@ -21,4 +21,11 @@ User.hasMany(Message, {
 
 Message.hasOne(Emoji, {
     foreignKey: 'emoji_id'
-})
+});
+
+module.exports = {
+    User,
+    Chat,
+    Message,
+    Emoji
+}
