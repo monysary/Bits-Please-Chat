@@ -5,23 +5,19 @@ class Message extends Model {}
 
 Message.init(
     {
-        message: {
-            // type: emoji/stickers,
-            allowNull: false
+        emoji_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'emoji',
+                key: 'id'
+            }
         },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull:false,
             references: {
                 model: 'user',
-                key: 'id'
-            }
-        },
-        chat_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'chat',
                 key: 'id'
             }
         }
