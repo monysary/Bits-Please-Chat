@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/index.js"
+    "seed": "node seeds/index.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
   "bugs": {
     "url": "https://github.com/monysary/Bits-Please-Chat/issues"
   },

@@ -15,4 +15,9 @@ router.get('/signup', (req, res) => {
     res.render('signup')
 });
 
+// Render chatroom page
+router.get('/chatroom', (req, res) => {
+    res.render('chatroom')
+});
+
 module.exports = router;
