@@ -23,12 +23,19 @@
                     </span>
                 </a>
                 <div class="flex md:order-2">
+                    {{#if loggedIn}}
+                        <button id="logout-btn" type="button"
+                            class="bg-[#904E55] text-[#F2EFE9] hover:bg-[#564E58] focus:ring-4 focus:outline-none focus:ring-[#F2EFE9] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0">
+                            Logout
+                        </button>
+                    {{else}}
                     <a href="/login">
                         <button type="button"
                             class="bg-[#904E55] text-[#F2EFE9] hover:bg-[#564E58] focus:ring-4 focus:outline-none focus:ring-[#F2EFE9] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0">
                             Login
                         </button>
                     </a>
+                    {{/if}}
                 </div>
             </div>
         </nav>
@@ -37,6 +44,9 @@
     <main class="flex justify-center items-center h-screen">
         {{{body}}}
     </main>
+    {{#if loggedIn}}
+        <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>

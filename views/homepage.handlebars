@@ -15,9 +15,16 @@
             <h2 class="mb-3 mt-3 text-5xl font-bold tracking-tight text-[#F2EFE9] text-center" id="press-start">Bits Please Chat</h2>
         </a>
         <p class="mb-5 font-normal text-[#BFB48F] text-2xl text-center">&#128556; Express yourself with emoji! &#128556;</p>
+        {{#if loggedIn}}
+        <a href="/chatroom" class="inline-flex items-center mt-3 px-3 py-2 text-sm font-medium text-center text-[#F2EFE9] bg-[#904E55] rounded-lg hover:bg-[#564E58] focus:ring-4 focus:outline-none focus:ring-[#F2EFE9]">
+            Enter the Chatroom!
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+        {{else}}
         <a href="/signup" class="inline-flex items-center mt-3 px-3 py-2 text-sm font-medium text-center text-[#F2EFE9] bg-[#904E55] rounded-lg hover:bg-[#564E58] focus:ring-4 focus:outline-none focus:ring-[#F2EFE9]">
             Click here to Sign Up!
             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </a>
+        {{/if}}
     </div>
 </div>

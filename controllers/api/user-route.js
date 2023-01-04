@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// User Signup Route
 router.post('/signup', async (req, res) => {
   try {
     const userData = await User.create(
@@ -11,8 +12,8 @@ router.post('/signup', async (req, res) => {
       }
     );
     req.session.save(() => {
-      // req.session.user_id = userData.id;
-      // req.session.username = userData.username;
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.loggedIn = true;
       res.status(200).json(userData);
     });
@@ -22,6 +23,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+// User Login Route
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
@@ -39,14 +41,25 @@ router.post('/login', async (req, res) => {
       return;
     }
     req.session.save(() => {
-      // req.session.user_id = userData.id;
-      // req.session.username = userData.username;
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.loggedIn = true;
       res.status(200).json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
+  }
+});
+
+// User Logout Route
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(200).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
