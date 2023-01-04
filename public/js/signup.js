@@ -1,9 +1,9 @@
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const usernameEl = document.querySelector("#username");
-  const emailEl = document.querySelector("#email");
-  const passwordEl = document.querySelector("#password");
+  const usernameEl = document.querySelector("#signup-username");
+  const emailEl = document.querySelector("#signup-email");
+  const passwordEl = document.querySelector("#signup-password");
 
   const response = await fetch('/api/user/signup', {
     method: 'POST',
@@ -16,8 +16,8 @@ const signupFormHandler = async (event) => {
   });
 
   if (response.ok) {
-    // document.location.replace('/chatroom');
-    alert('Signed up!') //placeholder for now
+    alert('Signed up!');
+    document.location.replace('/chatroom');
   } else {
     alert('Failed to sign up!');
   }
