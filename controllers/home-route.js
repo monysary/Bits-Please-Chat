@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 // Render homepage
 router.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('homepage', { loggedIn: req.session.loggedIn })
 });
 
 // Render login page
@@ -17,7 +17,7 @@ router.get('/signup', (req, res) => {
 
 // Render chatroom page
 router.get('/chatroom', (req, res) => {
-    res.render('chatroom')
+    res.render('chatroom', { loggedIn: req.session.loggedIn })
 });
 
 module.exports = router;
