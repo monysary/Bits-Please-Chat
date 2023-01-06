@@ -10,7 +10,7 @@ const socketio = require('socket.io');
 const app = express();
 const server = http.createServer(app); 
 const io = socketio(server); 
-// const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 // Setting up handlebars engine
 app.engine('handlebars', hbs.engine);
