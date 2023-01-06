@@ -27,6 +27,10 @@ socket.on('add-message', messages => {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
+socket.on('serverMessage', serverMessage => 
+  outputServer(serverMessage)
+)
+
 // Message submit
 chatForm.forEach((button) => {
   button.addEventListener('click', (event) => {
