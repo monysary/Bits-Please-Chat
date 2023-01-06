@@ -62,22 +62,22 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// User Logout Route
-router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(200).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
+  // User Logout Route
+  router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(200).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
-// Get username
-router.get('/getUser', (req, res) => {
-  const username = req.session.username;
+  // Get username
+  router.get('/getUser', (req, res) => {
+    const username = req.session.username;
 
-  res.status(200).json(username)
-})
+    res.status(200).json(username)
+  })
 
-module.exports = router;
+  module.exports = router;
