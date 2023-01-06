@@ -35,10 +35,16 @@ function outputMessage(message) {
     fetch('/api/user/getUser')
       .then(res => res.json())
       .then(data => {
+        updateUrl(data)
+
+        const { username } = Qs.parse(location.search, {
+          ignoreQueryPrefix: true,
+        });
+
         const div = document.createElement('div');
         div.classList.add('message'); // add to CSS
         div.innerHTML = `
-          <p class="meta text-[#F2EFE9]">${data}</p>
+          <p class="meta text-[#F2EFE9]">${username}</p>
           <img src="${message}" class="w-52 bg-[#BFB48F] text-[#904E55] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
         `;
         document.querySelector('#chat-messages').appendChild(div);
@@ -57,3 +63,10 @@ function outputServer(serverMessage) {
   `;
   document.querySelector('#chat-messages').appendChild(div);
 };
+
+// Update URL with username
+function updateUrl(username) {
+  const pathname = window.location.pathname;
+  const newUrl = `${pathname}?username=${username}`;
+  window.history.pushState({}, '', newUrl);
+}
