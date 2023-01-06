@@ -43,7 +43,7 @@ io.on('connection', socket => {
 
 // Setting up sessions
 const sess = {
-    secret: 'the secret string',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
