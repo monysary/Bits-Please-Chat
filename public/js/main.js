@@ -9,6 +9,10 @@ socket.on('message', message => {
   outputMessage(message);
 });
 
+socket.on('serverMessage', serverMessage => {
+  outputServer(serverMessage);
+})
+
 console.log(chatForm);
 
 // Message submit
@@ -26,11 +30,20 @@ chatForm.forEach((button) => {
 }) 
 
 
-// Output messages to DOM
+// Output Emojis to DOM
 function outputMessage(message) {
   const div = document.createElement('div');
-  div.classList.add('message');
-  div.innerHTML = `    <p class="meta"> Brad <span>9:12pm</span></p>
+  div.classList.add('message'); // add to CSS
+  div.innerHTML = `<p class="meta"> Brad <span>9:12pm</span></p>
   <img src="${message}">`;
   document.querySelector('#chat-messages').appendChild(div);
-}
+};
+
+// Output Server to DOM
+function outputServer(serverMessage) {
+  const div = document.createElement('div');
+  div.classList.add('serverMessage'); //add to CSS
+  div.innerHTML = `<p class="meta"> Server Please <span>9:12pm</span></p>
+  <div>${serverMessage}</div>`;
+  document.querySelector('#chat-messages').appendChild(div);
+};
