@@ -10,7 +10,7 @@ const socketio = require('socket.io');
 const app = express();
 const server = http.createServer(app); 
 const io = socketio(server); 
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 
 // Setting up handlebars engine
 app.engine('handlebars', hbs.engine);
@@ -60,5 +60,5 @@ app.use(require('./controllers'));
 
 // App listening on PORT
 sequelize.sync().then(() => {
-    server.listen(PORT, () => console.log(`Application listening at http://localhost:${PORT}`)) 
+    server.listen(process.env.PORT || 3001, () => console.log(`Application listening at http://localhost:${process.env.PORT || 3001}`)) 
 });
