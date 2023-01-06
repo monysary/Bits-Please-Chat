@@ -4,6 +4,7 @@ const logoutFormHandler = async () => {
     headers: { 'Content-Type': 'application/json' },
   });
   if (response.ok) {
+    console.log(response);
     document.location.replace('/');
   } else {
     alert('Failed to Logout!');
