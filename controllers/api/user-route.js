@@ -63,4 +63,11 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Get username
+router.get('/getUser', (req, res) => {
+  const username = req.session.username;
+
+  res.status(200).json(username)
+})
+
 module.exports = router;
