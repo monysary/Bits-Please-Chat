@@ -18,7 +18,7 @@ socket.on('add-message', messages => {
           
           <div class="flex items-end">
             <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-               <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-[#B87678] "><img src="${message.messageContent}"</span></div>
+               <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-[#EBC9AF] "><img src="${message.messageContent}"</span></div>
             </div>
         `;
         document.querySelector('#chat-messages').appendChild(div);
@@ -86,7 +86,7 @@ function outputServer(serverMessage) {
    
     <div class="flex items-end justify-end">
             <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-               <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-[#EBC9AF] ">${serverMessage}</span></div>
+               <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-[#B87678] ">${serverMessage}</span></div>
             </div>
   `;
   document.querySelector('#chat-messages').appendChild(div);
