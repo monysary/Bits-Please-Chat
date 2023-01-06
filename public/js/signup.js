@@ -21,8 +21,11 @@ const signupFormHandler = async (event) => {
     });
   
     if (response.ok) {
+      console.log(response);
       alert('Signed up!');
       document.location.replace('/chatroom');
+    } else if (response.status == 400) {
+      alert ('Account already exists for this email');
     } else {
       alert('Failed to sign up!');
     }

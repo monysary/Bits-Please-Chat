@@ -16,6 +16,8 @@ const loginFormHandler = async (event) => {
   if (response.ok) {
     alert('Logged in Successfully!');
     document.location.replace('/chatroom');
+  } else if (response.status == 400) {
+    alert('Incorrect email or password, please try again')
   } else {
     alert('Failed to Login!');
   }
