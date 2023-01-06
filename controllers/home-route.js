@@ -17,7 +17,7 @@ router.get('/signup', (req, res) => {
 
 // Render chatroom page
 router.get('/chatroom', (req, res) => {
-    res.render('chatroom', { loggedIn: req.session.loggedIn })
+    res.render('chatroom', { loggedIn: req.session.loggedIn, user: req.session.user })
 });
 
 module.exports = router;

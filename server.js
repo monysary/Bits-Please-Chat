@@ -19,6 +19,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Run when a client connects GRIFFIN ADDED
+// Run when a client connects GRIFFIN ADDED
 io.on('connection', socket => {
     console.log('New WS Connection...');
 
@@ -36,7 +37,13 @@ io.on('connection', socket => {
     // Listening for the chatMessage event
     socket.on('chatMessage', (msg) => {
         // console.log(msg);
-        io.emit('message', msg);
+        let messages = [];
+        if (messages[messages.length - 1] != msg) {
+            messages.push(msg);
+            console.log(messages);
+            io.emit('add-message', messages);
+        }
+        
     });
 });
 
@@ -53,7 +60,7 @@ app.use(session(sess));
 
 // Setting up express middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(require('./controllers'));
 
