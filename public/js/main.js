@@ -1,16 +1,23 @@
 const chatForm = document.querySelectorAll('.msg');
-// const chatMessages = document.querySelector('.chat-messages');
+const chatMessages = document.querySelector('#chat-messages');
 
 const socket = io();
 
 // Messages from server
 socket.on('message', message => {
-  console.log(message);
+  // console.log(message);
   outputMessage(message);
+
+  // Scroll down
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 socket.on('serverMessage', serverMessage => {
+  // console.log(serverMessage);
   outputServer(serverMessage);
+
+  // Scroll down
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
 console.log(chatForm);
@@ -47,3 +54,5 @@ function outputServer(serverMessage) {
   <div>${serverMessage}</div>`;
   document.querySelector('#chat-messages').appendChild(div);
 };
+
+//25:25
