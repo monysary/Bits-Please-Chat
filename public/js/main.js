@@ -54,9 +54,13 @@ function outputMessage(message) {
         const username = document.querySelector('#username').value;
         div.classList.add('message'); // add to CSS
         div.innerHTML = `
-        
-          <p class="meta text-[#F2EFE9]"> ${username} </p>
-          <img src="${message}" class="w-52 bg-[#BFB48F] text-[#904E55] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+          <p class="meta text-[#F2EFE9]">${username}</p>
+          
+          <div class="flex items-end">
+            <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+               <div><span class="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-[#B87678] "><img src="${message}"</span></div>
+            </div>
+          
         `;
         document.querySelector('#chat-messages').appendChild(div);
 
@@ -69,8 +73,12 @@ function outputServer(serverMessage) {
   const div = document.createElement('div');
   div.classList.add('serverMessage'); //add to CSS
   div.innerHTML = `
-    <p class="meta text-[#F2EFE9]"> Server says </p>
-    <div class="bg-[#BFB48F] text-[#904E55] font-medium rounded-lg text-sm px-5 py-2.5 text-center">${serverMessage}</div>
+    <p class="meta text-[#F2EFE9] text-right"> Server says </p>
+   
+    <div class="flex items-end justify-end">
+            <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
+               <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-[#EBC9AF] ">${serverMessage}</span></div>
+            </div>
   `;
   document.querySelector('#chat-messages').appendChild(div);
 };
