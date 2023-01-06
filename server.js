@@ -22,15 +22,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', socket => {
     console.log('New WS Connection...');
 
-    // Welcomes the user to the chatroom
-    socket.emit('message', 'Welcome to Bits Please!')
+    // // Welcomes the user to the chatroom
+    // socket.emit('serverMessage', 'Welcome to Bits Please!')
 
     // Broadcast to others when a user connects 
-    socket.broadcast.emit('message', 'A user has joined the chat!');
+    socket.broadcast.emit('serverMessage', 'A user has joined the chat!');
 
     // Runs when client disconnects
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left the chat!');
+        io.emit('serverMessage', 'A user has left the chat!');
     });
 
     // Listening for the chatMessage event
