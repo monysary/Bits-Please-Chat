@@ -44,7 +44,10 @@ io.on('connection', socket => {
 const sess = {
     secret: 'the secret string',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60 * 60 * 1000
+    }
 };
 app.use(session(sess));
 
