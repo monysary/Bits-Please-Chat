@@ -5,12 +5,11 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session')
 const hbs = exphbs.create({});
-const http = require('http'); //setting up socket.io
-const socketio = require('socket.io'); //setting up socket.io
-
+const http = require('http'); 
+const socketio = require('socket.io'); 
 const app = express();
-const server = http.createServer(app); //setting up socket.io
-const io = socketio(server); //Griffin added
+const server = http.createServer(app); 
+const io = socketio(server); 
 const PORT = process.env.PORT || 3001;
 
 // Setting up handlebars engine
@@ -18,14 +17,10 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Run when a client connects GRIFFIN ADDED
-// Run when a client connects GRIFFIN ADDED
+// Run when a client connects 
 io.on('connection', socket => {
     console.log('New WS Connection...');
-
-    // // Welcomes the user to the chatroom
-    // socket.emit('serverMessage', 'Welcome to Bits Please!')
-
+    
     // Broadcast to others when a user connects 
     socket.broadcast.emit('serverMessage', 'A user has joined the chat!');
 
@@ -42,8 +37,7 @@ io.on('connection', socket => {
             messages.push(msg);
             console.log(messages);
             io.emit('add-message', messages);
-        }
-        
+        }       
     });
 });
 
@@ -66,9 +60,5 @@ app.use(require('./controllers'));
 
 // App listening on PORT
 sequelize.sync().then(() => {
-    server.listen(PORT, () => console.log(`Application listening at http://localhost:${PORT}`)) //changed from app to server for socket.io
+    server.listen(PORT, () => console.log(`Application listening at http://localhost:${PORT}`)) 
 });
-
-
-// Socket.io code Griffin added
-
