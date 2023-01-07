@@ -76,6 +76,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(require('./controllers'));
 
 // App listening on PORT
-sequelize.sync().then(() => {
-    server.listen(process.env.PORT || 3001, () => console.log(`Application listening at http://localhost:${process.env.PORT || 3001}`)) 
-});
+// sequelize.sync().then(() => {
+//     server.listen(process.env.PORT || 3001, () => console.log(`Application listening at http://localhost:${process.env.PORT || 3001}`)) 
+// });
+
+server.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}!`);
+    sequelize.sync({ force: false });
+  });
