@@ -40,6 +40,8 @@ const sequelize = require('./config/connections');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Setting up sessions
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 const sess = {
     secret: 'the secret string',
     cookie: {
@@ -50,11 +52,10 @@ const sess = {
     },
     resave: false,
     saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize
-    })
+    cookie: {
+        maxAge: 60 * 60 * 1000
+    }
 };
-
 app.use(session(sess));
 
 // Setting up handlebars engine
@@ -69,6 +70,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(require('./controllers'));
 
 // App listening on PORT
-sequelize.sync().then(() => {
-    server.listen(PORT, () => console.log(`Application listening at http://localhost:${PORT}`)) 
-});
+// sequelize.sync().then(() => {
+//     server.listen(process.env.PORT || 3001, () => console.log(`Application listening at http://localhost:${process.env.PORT || 3001}`)) 
+// });
+
+server.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}!`);
+    sequelize.sync({ force: false });
+  });
