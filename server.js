@@ -1,6 +1,5 @@
 // Setting up dependencies
 const express = require('express');
-const sequelize = require('./config/connections');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session')
@@ -41,15 +40,25 @@ io.on('connection', socket => {
     });
 });
 
+const sequelize = require('./config/connections');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 // Setting up sessions
 const sess = {
     secret: 'the secret string',
+    cookie: {
+        maxAge: 60 * 60 * 1000,
+        httpOnly: true,
+        secure: false,
+        sameSite: 'strict',
+    },
     resave: false,
     saveUninitialized: true,
-    cookie: {
-        maxAge: 60 * 60 * 1000
-    }
+    store: new SequelizeStore({
+        db: sequelize
+    })
 };
+
 app.use(session(sess));
 
 // Setting up express middleware
