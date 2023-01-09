@@ -13,7 +13,7 @@
   ## Installation
   To download this code, use git clone with the https link found under the green code button. Once downloaded, run npm i -y in an integrated terminal to install all the required packages specified in the i package.json file. Create a .env file that specifies your MySQL username as DB_USER, your MySQL password as DB_PASSWORD and the database as DB_NAME= 'bits_please_db'. Use the code found in the schema file under db to generate a database in MySQL. Then in the integrated terminal 'npm run seed' will populate the database with seed data.
   
-  To access the running version of this site go to https://warm-spire-85338.herokuapp.com/
+  To access the running version of this site go to https://damp-river-11459.herokuapp.com/
 
   ## Usage
   <img src="/screenshots/home_page_scrnshot.png">
